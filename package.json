@@ -6,16 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://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@github.com/HenBarper/atlas-web_graphql.git"
-  },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/HenBarper/atlas-web_graphql/issues"
-  },
-  "homepage": "https://github.com/HenBarper/atlas-web_graphql#readme",
   "dependencies": {
     "apollo-boost": "^0.4.9",
     "express": "^4.18.3",
