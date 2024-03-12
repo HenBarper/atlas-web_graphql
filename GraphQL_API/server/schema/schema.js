@@ -71,8 +71,14 @@ const RootQuery = new GraphQLObjectType({
         task: {
             type: TaskType,
             args: { id: { type: GraphQLID} },
-            resolve(parent,args){
+            resolve(parent, args){
                 return lodash.find(arrayOfTasks, { 'id': args.id })
+            }
+        },
+        tasks: {
+            type: new GraphQLList(TaskType),
+            resolve(parent){
+                return arrayOfTasks
             }
         },
         project: {
@@ -80,6 +86,12 @@ const RootQuery = new GraphQLObjectType({
             args: { id: { type: GraphQLID } },
             resolve(parent, args){
                 return lodash.find(arrayOfProjects, { 'id': args.id })
+            }
+        },
+        projects: {
+            type: new GraphQLList(ProjectType),
+            resolve(parent){
+                return arrayOfProjects
             }
         }
     }
