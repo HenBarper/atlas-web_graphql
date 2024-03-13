@@ -1,6 +1,7 @@
 const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLID, GraphQLList, GraphQLSchema, GraphQLNonNull } = require('graphql');
 const lodash = require('lodash');
 const Project = require('../models/project');
+const Task = require('../models/task');
 
 const arrayOfTasks = [
     {
@@ -115,6 +116,22 @@ const Mutation = new GraphQLObjectType({
                     description: args.description
                 });
                 return newProj.save();
+            }
+        },
+        addTask: {
+            type: TaskType,
+            args: {
+                title: { type: new GraphQLNonNull(GraphQLString) },
+                weight: { type: new GraphQLNonNull(GraphQLInt) },
+                description: { type: new GraphQLNonNull(GraphQLString) }
+            },
+            resolve(parent, args){
+                const newTask = new Task({
+                    title: args.title,
+                    weight: args.weight,
+                    description: args.description
+                });
+                return newTask.save();
             }
         }
     }
